@@ -1,2 +1,2 @@
 [tomcat]
-172.31.3.145   
+172.31.3.145 tomcat_user=ec2-user 
