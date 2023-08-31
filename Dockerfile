@@ -1,6 +1,6 @@
 FROM tomcat:latest
 MAINTAINER "ravimore001@gmail.com"
-COPY target/LoginWebApp.war /usr/local/tocat/webapps
+COPY target/LoginWebApp.war /usr/local/tomcat/webapps
+WORKDIR /usr/local/tomcat/webapps
 EXPOSE 8080
-WORKDIR /usr/local/tocat/webapps
 CMD ["catalina.sh" ,"run"]
