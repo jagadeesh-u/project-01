@@ -1,0 +1,15 @@
+---
+- name: playbook
+  hosts: tomcat
+  become: true
+
+  tasks:
+  - name: copy file
+    copy:
+      src: /var/lib/jenkins/workspace/pipeline_project/target/LoginWebApp.war
+      dest: /opt/docker
+
+  - name: copy file
+    copy:
+      src: /var/lib/jenkins/workspace/pipeline_project/Dockerfile
+      dest: /opt/docker
