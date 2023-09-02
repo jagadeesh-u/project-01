@@ -13,3 +13,24 @@
     copy:
       src: /var/lib/jenkins/workspace/pipeline_project/Dockerfile
       dest: /opt/docker
+      
+- name : remove old images
+    command: docker system prune -a -f
+    args:
+      chdir: /opt/docker
+
+  - name: creating new docker image
+    command: docker build -t tomcat:1.0  .
+    args:
+      chdir: /opt/docker
+
+  - name: creating new  container
+    command: docker run -itdp 8080:8080 --name my-container tomcat:1.0 bash
+    args:
+      chdir: /opt/docker
+
+  - name: tagging the new image
+    command: docker tag tomcat:1.0 ravimore001/tomcat:1.0
+
+  - name: push docker image on docker hub
+    command: docker push ravimore001/tomcat:1.0
